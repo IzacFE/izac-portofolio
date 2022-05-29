@@ -6,7 +6,7 @@ const Layout = (props) => {
   return (
     <>
       <Navigation />
-      <div className={`${styles.layout} bg-stone-100 dark:bg-slate-900`}>
+      <div className={`${styles.layout} bg-stone-100 dark:bg-slate-800`}>
         {props.children}
       </div>
     </>

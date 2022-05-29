@@ -38,10 +38,6 @@ const useStyles = createStyles((theme) => ({
     alignItems: "center",
     height: "100%",
   },
-
-  logo: {
-    fontWeight: 600,
-  },
 }));
 
 const Navigation = () => {
@@ -51,10 +47,13 @@ const Navigation = () => {
   return (
     <Header
       height={HEADER_HEIGHT}
-      className={`${classes.root} dark:bg-indigo-900`}
+      className={`${classes.root} dark:bg-gray-900`}
     >
       <Container className={classes.header}>
-        <Group spacing={5} className={`${classes.logo} dark:text-white`}>
+        <Group
+          spacing={5}
+          className={`${classes.logo} dark:text-stone-200 navTitle`}
+        >
           Izac Aqsha
         </Group>
 

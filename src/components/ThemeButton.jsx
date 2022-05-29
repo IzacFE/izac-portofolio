@@ -35,6 +35,7 @@ const useStyles = createStyles((theme) => ({
 
   value: {
     lineHeight: 1,
+    fontWeight: 600,
   },
 }));
 
@@ -56,14 +57,14 @@ const ThemeButton = () => {
     <Group position="center" my="xl">
       <UnstyledButton
         aria-label="Toggle theme"
-        className={`${classes.control} bg-stone-200 dark:bg-slate-900`}
+        className={`${classes.control} bg-stone-200 dark:bg-gray-800`}
         onClick={() => {
           setTheme(colorTheme);
           themeSaver();
         }}
         title="Ctrl + J"
       >
-        <Text size="sm" className={`${classes.value} dark:text-stone-100`}>
+        <Text size="sm" className={`${classes.value} dark:text-stone-200`}>
           {upperFirst(colorTheme === "light" ? "dark" : "light")}
         </Text>
         <Center className={`${classes.iconWrapper} `}>{Icon}</Center>
