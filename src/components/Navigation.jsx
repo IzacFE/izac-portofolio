@@ -6,21 +6,17 @@ import {
   Group,
   Burger,
   Drawer,
-  Button,
-  useMantineTheme,
 } from "@mantine/core";
 import { useBooleanToggle } from "@mantine/hooks";
+import ThemeButton from "./ThemeButton";
 
 const HEADER_HEIGHT = 60;
 
 const useStyles = createStyles((theme) => ({
   root: {
     position: "relative",
+    border: "none",
     zIndex: 1,
-    backgroundColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[8]
-        : theme.colors.gray[0],
   },
 
   dropdown: {
@@ -46,45 +42,28 @@ const useStyles = createStyles((theme) => ({
   logo: {
     fontWeight: 600,
   },
-
-  link: {
-    display: "block",
-    lineHeight: 1,
-    textDecoration: "none",
-    padding: theme.spacing.md,
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
-    fontWeight: 500,
-
-    "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
-    },
-  },
 }));
 
 const Navigation = () => {
   const [opened, toggleOpened] = useBooleanToggle(false);
   const { classes } = useStyles();
-  const theme = useMantineTheme();
 
   return (
-    <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
+    <Header
+      height={HEADER_HEIGHT}
+      className={`${classes.root} dark:bg-indigo-900`}
+    >
       <Container className={classes.header}>
-        <Group spacing={5} className={classes.logo}>
+        <Group spacing={5} className={`${classes.logo} dark:text-white`}>
           Izac Aqsha
         </Group>
 
         <Group>
+          <ThemeButton />
           <Burger
             opened={opened}
             onClick={() => toggleOpened()}
-            className={classes.burger}
+            className={`dark:bg-stone-100`}
             size="sm"
           />
         </Group>
@@ -94,12 +73,9 @@ const Navigation = () => {
           onClose={() => toggleOpened(false)}
           title="Menu"
           padding="xl"
-          size="sm"
-          withinPortal={true}
-          overlayColor={theme.colors.dark[3]}
-          overlayOpacity={1}
+          size="150px"
+          overlayOpacity={0.5}
           overlayBlur={0.1}
-          transition="rotate-left"
           transitionDuration={500}
           transitionTimingFunction="ease"
           withCloseButton={false}
